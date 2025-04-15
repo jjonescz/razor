@@ -137,6 +137,8 @@ internal static class ComponentMetadata
 
         public const string TypeParameterConstraintsKey = "Component.TypeParameterConstraints";
 
+        public const string DynamicallyAccessedMembersKey = "Components.TypeParameter.DynamicallyAccessedMembers";
+
         public const string NameMatchKey = "Components.NameMatch";
 
         public const string HasRenderModeDirectiveKey = "Components.HasRenderModeDirective";

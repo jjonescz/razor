@@ -117,21 +117,31 @@ internal abstract class ComponentNodeWriter : IntermediateNodeWriter, ITemplateT
         writer.Write(" ");
         writer.Write(node.MethodName);
         writer.Write("<");
-        
+
         // Add DynamicallyAccessedMembers attribute to each generic type parameter
         var typeParametersArray = node.Component.Component.GetTypeParameters().ToArray();
-        for (int i = 0; i < typeParametersArray.Length; i++) 
+        for (int i = 0; i < typeParametersArray.Length; i++)
         {
             if (i > 0)
             {
                 writer.Write(", ");
             }
-            
-            // Add the DynamicallyAccessedMembers attribute to ensure AOT compatibility
-            writer.Write("[global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All)] ");
+
+            // Check if the type parameter has DynamicallyAccessedMembers attribute and copy it over
+            var typeParam = typeParametersArray[i];
+            if (typeParam.HasDynamicallyAccessedMembersAttribute())
+            {
+                string attributeText = typeParam.GetDynamicallyAccessedMembersAttributeText();
+                if (!string.IsNullOrEmpty(attributeText))
+                {
+                    writer.Write(attributeText);
+                    writer.Write(" ");
+                }
+            }
+
             writer.Write(typeParametersArray[i].Name);
         }
-        
+
         writer.Write(">");
 
         writer.Write("(");
@@ -306,8 +316,18 @@ internal abstract class ComponentNodeWriter : IntermediateNodeWriter, ITemplateT
                     writer.Write(", ");
                 }
                 
-                // Add the DynamicallyAccessedMembers attribute to ensure AOT compatibility
-                writer.Write("[global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All)] ");
+                // Check if the type parameter has DynamicallyAccessedMembers attribute and copy it over
+                var typeParam = captureTypeParametersArray[i];
+                if (typeParam.HasDynamicallyAccessedMembersAttribute())
+                {
+                    string attributeText = typeParam.GetDynamicallyAccessedMembersAttributeText();
+                    if (!string.IsNullOrEmpty(attributeText))
+                    {
+                        writer.Write(attributeText);
+                        writer.Write(" ");
+                    }
+                }
+                
                 writer.Write(captureTypeParametersArray[i].Name);
             }
             

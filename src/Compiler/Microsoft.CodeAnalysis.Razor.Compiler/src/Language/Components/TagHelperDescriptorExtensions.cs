@@ -251,4 +251,29 @@ internal static class TagHelperDescriptorExtensions
 
         return false;
     }
+
+    /// <summary>
+    /// Checks if a type parameter has the DynamicallyAccessedMembers attribute.
+    /// </summary>
+    /// <param name="typeParameter">The type parameter to check.</param>
+    /// <returns>True if the type parameter has the DynamicallyAccessedMembers attribute.</returns>
+    public static bool HasDynamicallyAccessedMembersAttribute(this BoundAttributeDescriptor typeParameter)
+    {
+        return typeParameter.Metadata.TryGetValue(ComponentMetadata.Component.DynamicallyAccessedMembersKey, out var _);
+    }
+
+    /// <summary>
+    /// Gets the DynamicallyAccessedMembers attribute text for a type parameter, if present.
+    /// </summary>
+    /// <param name="typeParameter">The type parameter to check.</param>
+    /// <returns>The attribute text, or null if not present.</returns>
+    public static string GetDynamicallyAccessedMembersAttributeText(this BoundAttributeDescriptor typeParameter)
+    {
+        if (typeParameter.Metadata.TryGetValue(ComponentMetadata.Component.DynamicallyAccessedMembersKey, out var attributeValue))
+        {
+            return attributeValue;
+        }
+        
+        return null;
+    }
 }
