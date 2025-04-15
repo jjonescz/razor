@@ -1,0 +1,24 @@
+﻿Source Location: (6:0,6 [16] x:\dir\subdir\Test\TestComponent.cshtml)
+|"/radio-buttons"|
+Generated Location: (504:16,0 [16] )
+|"/radio-buttons"|
+
+Source Location: (122:4,33 [7] x:\dir\subdir\Test\TestComponent.cshtml)
+|"false"|
+Generated Location: (1194:35,0 [7] )
+|"false"|
+
+Source Location: (169:5,33 [6] x:\dir\subdir\Test\TestComponent.cshtml)
+|"true"|
+Generated Location: (1556:47,0 [6] )
+|"true"|
+
+Source Location: (239:9,11 [47] x:\dir\subdir\Test\TestComponent.cshtml)
+|
+        private string value1 = "true";
+    |
+Generated Location: (1879:60,0 [47] )
+|
+        private string value1 = "true";
+    |
+

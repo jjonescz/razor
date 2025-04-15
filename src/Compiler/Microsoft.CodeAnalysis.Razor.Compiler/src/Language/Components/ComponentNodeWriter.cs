@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Razor.Language.CodeGeneration;
 using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.AspNetCore.Razor.Language.Intermediate;
@@ -116,7 +117,21 @@ internal abstract class ComponentNodeWriter : IntermediateNodeWriter, ITemplateT
         writer.Write(" ");
         writer.Write(node.MethodName);
         writer.Write("<");
-        writer.Write(string.Join(", ", node.Component.Component.GetTypeParameters().Select(a => a.Name)));
+        
+        // Add DynamicallyAccessedMembers attribute to each generic type parameter
+        var typeParametersArray = node.Component.Component.GetTypeParameters().ToArray();
+        for (int i = 0; i < typeParametersArray.Length; i++) 
+        {
+            if (i > 0)
+            {
+                writer.Write(", ");
+            }
+            
+            // Add the DynamicallyAccessedMembers attribute to ensure AOT compatibility
+            writer.Write("[global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All)] ");
+            writer.Write(typeParametersArray[i].Name);
+        }
+        
         writer.Write(">");
 
         writer.Write("(");
@@ -281,7 +296,21 @@ internal abstract class ComponentNodeWriter : IntermediateNodeWriter, ITemplateT
             writer.Write("public static void ");
             writer.Write(node.MethodName);
             writer.Write("_CaptureParameters<");
-            writer.Write(string.Join(", ", node.Component.Component.GetTypeParameters().Select(a => a.Name)));
+            
+            // Add DynamicallyAccessedMembers attribute to each generic type parameter in CaptureParameters method as well
+            var captureTypeParametersArray = node.Component.Component.GetTypeParameters().ToArray();
+            for (int i = 0; i < captureTypeParametersArray.Length; i++) 
+            {
+                if (i > 0)
+                {
+                    writer.Write(", ");
+                }
+                
+                // Add the DynamicallyAccessedMembers attribute to ensure AOT compatibility
+                writer.Write("[global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All)] ");
+                writer.Write(captureTypeParametersArray[i].Name);
+            }
+            
             writer.Write(">");
 
             writer.Write("(");

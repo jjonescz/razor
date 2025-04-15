@@ -1,0 +1,4 @@
+﻿x:\dir\subdir\Test\TestComponent.cshtml(4,9): Warning RZ10012: Found markup element with unexpected name 'InputRadioGroup'. If this is intended to be a component, add a @using directive for its namespace.
+x:\dir\subdir\Test\TestComponent.cshtml(4,39): Error RZ9991: The attribute names could not be inferred from bind attribute 'bind-Value'. Bind attributes should be of the form 'bind' or 'bind-value' along with their corresponding optional parameters like 'bind-value:event', 'bind:format' etc.
+x:\dir\subdir\Test\TestComponent.cshtml(5,13): Warning RZ10012: Found markup element with unexpected name 'InputRadio'. If this is intended to be a component, add a @using directive for its namespace.
+x:\dir\subdir\Test\TestComponent.cshtml(6,13): Warning RZ10012: Found markup element with unexpected name 'InputRadio'. If this is intended to be a component, add a @using directive for its namespace.

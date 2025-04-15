@@ -1,0 +1,26 @@
+﻿Document - 
+    NamespaceDeclaration -  - Test
+        UsingDirective - (3:1,1 [20] ) - global::System
+        UsingDirective - (26:2,1 [40] ) - global::System.Collections.Generic
+        UsingDirective - (69:3,1 [25] ) - global::System.Linq
+        UsingDirective - (97:4,1 [36] ) - global::System.Threading.Tasks
+        UsingDirective - (136:5,1 [45] ) - global::Microsoft.AspNetCore.Components
+        RouteAttributeExtensionNode - (6:0,6 [16] x:\dir\subdir\Test\TestComponent.cshtml) - "/radio-buttons"
+        ClassDeclaration -  - public partial - TestComponent - global::Microsoft.AspNetCore.Components.ComponentBase - 
+            MethodDeclaration -  - protected override - void - BuildRenderTree
+                MarkupElement - (34:2,4 [186] x:\dir\subdir\Test\TestComponent.cshtml) - div
+                    MarkupElement - (49:3,8 [159] x:\dir\subdir\Test\TestComponent.cshtml) - InputRadioGroup
+                        MarkupElement - (101:4,12 [33] x:\dir\subdir\Test\TestComponent.cshtml) - InputRadio
+                            HtmlAttribute - (112:4,23 [19] x:\dir\subdir\Test\TestComponent.cshtml) -  Value=" - "
+                                CSharpExpressionAttributeValue - (120:4,31 [10] x:\dir\subdir\Test\TestComponent.cshtml) - 
+                                    LazyIntermediateToken - (122:4,33 [7] x:\dir\subdir\Test\TestComponent.cshtml) - CSharp - "false"
+                        HtmlContent - (134:4,45 [14] x:\dir\subdir\Test\TestComponent.cshtml)
+                            LazyIntermediateToken - (134:4,45 [14] x:\dir\subdir\Test\TestComponent.cshtml) - Html - \n            
+                        MarkupElement - (148:5,12 [32] x:\dir\subdir\Test\TestComponent.cshtml) - InputRadio
+                            HtmlAttribute - (159:5,23 [18] x:\dir\subdir\Test\TestComponent.cshtml) -  Value=" - "
+                                CSharpExpressionAttributeValue - (167:5,31 [9] x:\dir\subdir\Test\TestComponent.cshtml) - 
+                                    LazyIntermediateToken - (169:5,33 [6] x:\dir\subdir\Test\TestComponent.cshtml) - CSharp - "true"
+                        TagHelperDirectiveAttribute - (79:3,38 [6] x:\dir\subdir\Test\TestComponent.cshtml) - bind-Value - System.Collections.Generic.Dictionary<string, object> Microsoft.AspNetCore.Components.Bind.Bind - HtmlAttributeValueStyle.DoubleQuotes
+                            LazyIntermediateToken - (79:3,38 [6] x:\dir\subdir\Test\TestComponent.cshtml) - CSharp - value1
+            CSharpCode - (239:9,11 [47] x:\dir\subdir\Test\TestComponent.cshtml)
+                LazyIntermediateToken - (239:9,11 [47] x:\dir\subdir\Test\TestComponent.cshtml) - CSharp - \n        private string value1 = "true";\n    

@@ -1,4 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
+// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
 #nullable disable
@@ -2323,7 +2323,7 @@ namespace Test
             Diagnostic(ErrorCode.ERR_InvalidExprTerm, ";").WithArguments(";").WithLocation(3, 7)
             ] : [
             // x:\dir\subdir\Test\TestComponent.cshtml(3,2): error CS1525: Invalid expression term ')'
-            // __builder.AddContent(3, 
+            // __builder.AddContent(3,
             Diagnostic(ErrorCode.ERR_InvalidExprTerm, "").WithArguments(")").WithLocation(3, 2)
             ]);
     }
@@ -2394,7 +2394,36 @@ namespace Test
 
     #endregion
 
-    #region Bind
+        #region Bind
+
+        [IntegrationTestFact, WorkItem("https://github.com/dotnet/razor/issues/11718")]
+        public void InputRadioGroup_WithStringValues_TrimsCorrectly()
+        {
+            // Arrange
+
+            // Act
+            var generated = CompileToCSharp(@"
+    @page ""/radio-buttons""
+    
+    <div>
+        <InputRadioGroup @bind-Value=""value1"">
+            <InputRadio Value=""@(""false"")"" />
+            <InputRadio Value=""@(""true"")"" />
+        </InputRadioGroup>
+    </div>
+    
+    @code {
+        private string value1 = ""true"";
+    }");
+
+            // Assert
+            AssertDocumentNodeMatchesBaseline(generated.CodeDocument);
+            AssertCSharpDocumentMatchesBaseline(generated.CodeDocument, verifyLinePragmas: false);
+            CompileToAssembly(generated, [
+                // The compiler warns about the unreferenced field
+                Diagnostic(ErrorCode.WRN_UnreferencedFieldAssg, "value1").WithArguments("Test.TestComponent.value1").WithLocation(11, 24)
+            ]);
+        }
 
     [IntegrationTestFact]
     public void BindToComponent_SpecifiesValue_WithMatchingProperties()
