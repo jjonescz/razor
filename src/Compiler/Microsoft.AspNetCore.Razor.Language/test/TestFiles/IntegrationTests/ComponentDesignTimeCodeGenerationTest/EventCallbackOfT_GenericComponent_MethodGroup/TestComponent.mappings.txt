@@ -1,0 +1,29 @@
+﻿Source Location: (20:0,20 [3] x:\dir\subdir\Test\TestComponent.cshtml)
+|123|
+Generated Location: (1150:29,20 [3] )
+|123|
+
+Source Location: (34:0,34 [9] x:\dir\subdir\Test\TestComponent.cshtml)
+|MyHandler|
+Generated Location: (1404:37,34 [9] )
+|MyHandler|
+
+Source Location: (13:0,13 [5] x:\dir\subdir\Test\TestComponent.cshtml)
+|Value|
+Generated Location: (1659:47,13 [5] )
+|Value|
+
+Source Location: (25:0,25 [7] x:\dir\subdir\Test\TestComponent.cshtml)
+|MyEvent|
+Generated Location: (1886:56,25 [7] )
+|MyEvent|
+
+Source Location: (56:1,7 [41] x:\dir\subdir\Test\TestComponent.cshtml)
+|
+    private void MyHandler(int x) { }
+|
+Generated Location: (2303:74,7 [41] )
+|
+    private void MyHandler(int x) { }
+|
+

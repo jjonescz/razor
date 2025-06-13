@@ -6554,6 +6554,30 @@ namespace Test
             Diagnostic(ErrorCode.ERR_BadArgType, "Increment").WithArguments("2", "method group", "Microsoft.AspNetCore.Components.EventCallback").WithLocation(2, 24));
     }
 
+    [IntegrationTestFact, WorkItem("https://github.com/dotnet/razor/issues/7069")]
+    public void EventCallbackOfT_GenericComponent_MethodGroup()
+    {
+        AdditionalSyntaxTrees.Add(Parse("""
+            using Microsoft.AspNetCore.Components;
+            namespace Test;
+            public class MyComponent<T> : ComponentBase
+            {
+                [Parameter] public T Value { get; set; }
+                [Parameter] public EventCallback<T> MyEvent { get; set; }
+            }
+            """));
+
+        var compiled = CompileToCSharp("""
+            <MyComponent Value="123" MyEvent="MyHandler" />
+            @code {
+                private void MyHandler(int x) { }
+            }
+            """);
+
+        AssertCSharpDocumentMatchesBaseline(compiled.CodeDocument);
+        CompileToAssembly(compiled);
+    }
+
     [IntegrationTestFact]
     public void EventCallbackOfT_GenericComponent_MissingTypeParameterBinding_01()
     {
