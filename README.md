@@ -2,6 +2,8 @@
 
 This repository is the open-source implementation for the [Razor](https://docs.microsoft.com/en-us/aspnet/core/razor-pages) experience in ASP.NET Core. It contains the compiler and IDE tools for working on Razor ASP.NET Core apps using [Visual Studio](https://visualstudio.com) and [Visual Studio Code](https://code.visualstudio.com/).
 
+test change
+
 ## Contributing
 
 All work on Razor happens directly on GitHub. Both core team members and external contributors send pull requests which go through the same review process. Some of the best ways to contribute are to try things out, [file issues](https://github.com/dotnet/razor/issues/new/choose), join in design conversations,
