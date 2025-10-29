@@ -1,4 +1,15 @@
 {
+  "branchInfo": null,
+  "branches": {
+    "vsBranch": "rel/d18.4",
+    "insertionCreateDraftPR": false,
+    "insertionTitlePrefix": "[d18.4]"
+  },
+  "requiredBranchInfo": {
+    "vsBranch": "rel/d18.4",
+    "insertionCreateDraftPR": false,
+    "insertionTitlePrefix": "[d18.4]"
+  },
   "feeds": {
     "vs-impl": "https://pkgs.dev.azure.com/azure-public/vside/_packaging/vs-impl/nuget/v3/index.json"
   },
@@ -19,17 +30,6 @@
       "rzls.win-x86": "vs-impl",
       "Microsoft.VisualStudio.DevKit.Razor": "vs-impl",
       "Microsoft.VisualStudioCode.RazorExtension": "vs-impl"
-    }
-  },
-  "branches": {
-    "main": {
-      "nugetKind": [
-        "Shipping",
-        "NonShipping"
-      ],
-      "vsBranch": "main",
-      "insertionCreateDraftPR": false,
-      "insertionTitlePrefix": "[InsidersVNext]"
     }
   }
 }
